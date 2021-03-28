@@ -1,4 +1,5 @@
 import React from "react"
+import LeftNavigationButton from "./leftNavigationButton"
 import WorkSpaceIcon from "./workSpaceIcon"
 
 const LeftNavigation = () => {
@@ -10,6 +11,7 @@ const LeftNavigation = () => {
           return <WorkSpaceIcon key={url} imgUrl={`/images/${url}.png`} />
         })}
       </div>
+      <LeftNavigationButton />
     </div>
   )
 }
