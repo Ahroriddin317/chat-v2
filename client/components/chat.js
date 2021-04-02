@@ -1,10 +1,10 @@
 import React from 'react'
-import LeftNavigation from './navigations/leftNavigation'
+import Navigations from './navigations'
 
 const Chat = () => {
   return (
-    <div className="w-screen h-screen">
-      <LeftNavigation />
+    <div className="w-screen h-screen bg-body-bg">
+      <Navigations/>
     </div>
   )
 }
