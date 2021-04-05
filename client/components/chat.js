@@ -1,10 +1,12 @@
 import React from 'react'
+import MainWindow from './mainWindow'
 import Navigations from './navigations'
 
 const Chat = () => {
   return (
-    <div className="w-screen h-screen bg-body-bg">
+    <div className="flex w-screen h-screen bg-body-bg">
       <Navigations/>
+      <MainWindow/>
     </div>
   )
 }
