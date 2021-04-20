@@ -1,0 +1,88 @@
+[
+  {
+    "workSpaceName": "JIMBIES",
+      "usersId": [
+          "606db813a05c93e105f25b85",
+          "606db813f83dc20f7c785684"
+        ],
+    "channels": [
+      {
+        "name": "NEUROCELL",
+        "messages": [
+          {
+            "userId": "606db813a05c93e105f25b85",
+            "messageId": "606dbd4534f0dd058378e52e",
+            "text": "Excepteur reprehenderit ea anim velit mollit cillum officia. Do esse adipisicing sint in non enim sunt sint excepteur enim. Id cupidatat minim et in. Sint do non magna magna anim ex excepteur.\r\n",
+            "messageDate": "2020-12-04T12:12:45 -05:00"
+          },
+          {
+            "userId": "606db813f83dc20f7c785684",
+            "messageId": "606dbd458f26f2db315e6f13",
+            "text": "Culpa do cupidatat nulla reprehenderit id velit veniam tempor minim pariatur incididunt sunt aute. Do nulla cupidatat deserunt tempor. Lorem nisi do eiusmod deserunt magna velit reprehenderit Lorem labore esse ad quis eu. Consectetur deserunt minim sunt in Lorem incididunt consectetur ipsum dolore nulla. Amet nostrud ex fugiat officia do. Magna proident in reprehenderit aliquip. Laboris labore occaecat in est fugiat fugiat sunt fugiat Lorem.\r\n",
+            "messageDate": "2016-08-30T07:45:21 -05:00"
+          }
+        ]
+      },
+      {
+        "name": "ZYTRAC",
+        "messages": [
+          {
+            "userId": "606db813a05c93e105f25b85",
+            "messageId": "606dbd45a7b802aa9dfe1cd8",
+            "text": "Elit ullamco ad velit anim. Velit commodo sunt ullamco sint consectetur labore labore veniam. Eiusmod ex deserunt duis culpa ullamco reprehenderit qui laboris commodo cupidatat commodo enim id est. Est aliquip nisi sint et velit est ullamco esse dolore. Culpa sit dolore adipisicing amet commodo Lorem duis proident ipsum. Mollit sunt non consequat do mollit voluptate anim est nisi officia pariatur esse. Excepteur et pariatur pariatur laborum anim aliqua duis.\r\n",
+            "messageDate": "2018-02-09T12:02:46 -05:00"
+          },
+          {
+            "userId": "606db813f83dc20f7c785684",
+            "messageId": "606dbd4573046512942a97d9",
+            "text": "Deserunt minim anim nisi nostrud anim dolor labore anim enim minim commodo. Id est excepteur duis ex. Fugiat duis dolore proident qui. Reprehenderit est ea Lorem fugiat anim adipisicing ipsum ex Lorem est dolore non.\r\n",
+            "messageDate": "2021-03-19T08:06:20 -05:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "workSpaceName": "HOUSEDOWN",
+    "usersId": [
+          "606db813a05c93e105f25b85",
+          "606db813f83dc20f7c785684"
+        ],
+    "channels": [
+      {
+        "name": "ONTALITY",
+        "messages": [
+          {
+            "userId": "606db813a05c93e105f25b85",
+            "messageId": "606dbd45977e118aef700f0e",
+            "text": "Fugiat quis irure labore dolore nisi eu velit cupidatat reprehenderit reprehenderit anim quis fugiat. Ut aute quis minim fugiat ex consequat. Ipsum nisi in sit enim aute commodo sint exercitation laboris commodo do. Exercitation occaecat fugiat eiusmod Lorem qui Lorem sit fugiat culpa ipsum amet velit officia consectetur. Amet aliquip esse cupidatat proident proident commodo nostrud consectetur ut non est eiusmod aute. Esse proident et velit duis incididunt aute est quis eiusmod.\r\n",
+            "messageDate": "2015-10-19T12:30:30 -05:00"
+          },
+          {
+            "userId": "606db813f83dc20f7c785684",
+            "messageId": "606dbd454ff66645517fd66e",
+            "text": "Duis anim irure ea consectetur laborum veniam id amet eu incididunt do. Dolore cillum incididunt fugiat id quis laboris. Aliquip minim Lorem et mollit sunt aliquip adipisicing non. Deserunt consequat dolore sint eu veniam ad laborum magna ex. Cupidatat officia aliqua magna adipisicing Lorem velit. Aliquip quis irure occaecat magna dolor aliqua.\r\n",
+            "messageDate": "2015-12-17T12:03:52 -05:00"
+          }
+        ]
+      },
+      {
+        "name": "ZIZZLE",
+        "messages": [
+          {
+            "userId": "606db813a05c93e105f25b85",
+            "messageId": "606dbd45e5a0bd05b8941426",
+            "text": "Pariatur occaecat commodo ex minim irure laboris consequat culpa officia. Minim laboris ad aute reprehenderit. Elit sit ea voluptate nostrud laboris quis eu sit enim et. Proident adipisicing proident anim nisi cupidatat est duis magna mollit. Laboris occaecat labore magna velit tempor non proident. Id incididunt tempor cillum esse quis consequat deserunt in proident occaecat sunt pariatur adipisicing aliquip. Mollit et veniam magna laboris laborum exercitation excepteur.\r\n",
+            "messageDate": "2020-06-26T12:12:16 -05:00"
+          },
+          {
+            "userId": "606db813f83dc20f7c785684",
+            "messageId": "606dbd4575c6be2bfa18bff7",
+            "text": "Occaecat laboris et qui id est Lorem aliquip. Deserunt labore ullamco eu magna dolore tempor cillum nostrud culpa elit eiusmod consectetur quis officia. Adipisicing in labore fugiat pariatur non. Culpa nisi ut adipisicing laborum deserunt proident excepteur quis.\r\n",
+            "messageDate": "2019-09-14T04:54:06 -05:00"
+          }
+        ]
+      }
+    ]
+  }
+]

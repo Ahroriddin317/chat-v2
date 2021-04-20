@@ -1,0 +1,18 @@
+[
+      {
+        "userId": "606db813a05c93e105f25b85",
+        "name": "Kathryn Larson",
+        "image": "https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzh8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+        "userName": "@ Charlotte",
+        "email": "charlottelarson@zizzle.com",
+        "tymeZona": "2:21 PM Local time"
+      },
+      {
+        "userId": "606db813f83dc20f7c785684",
+        "name": "Margo Ortega",
+        "image": "https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzh8fHByb2ZpbGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+        "userName": "@ Flores",
+        "email": "floresortega@zizzle.com",
+        "tymeZona": "2:21 PM Local time"
+      }
+]

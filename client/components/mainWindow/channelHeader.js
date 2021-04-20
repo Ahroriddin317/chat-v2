@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Star from '../../assets/svg/star.svg'
 import ManIcon from '../../assets/svg/manIcon.svg'
 import Search from '../../assets/svg/search.svg'
@@ -7,7 +7,7 @@ import Options from '../../assets/svg/options.svg'
 
 const ChannelHeader = () => {
   return (
-    <div className="flex justify-between mt-3">
+    <div className="flex justify-between mt-3 px-5">
       <div className="flex items-center text-xl font-lato">
         <span>#general</span>
         <Star className="ml-2 cursor-pointer" />
@@ -28,10 +28,10 @@ const ChannelHeader = () => {
           </button>
         </div>
         <button type="button" className="focus:outline-none">
-          <Notification/>
+          <Notification />
         </button>
         <button type="button" className="focus:outline-none">
-          <Options/>
+          <Options />
         </button>
       </div>
     </div>

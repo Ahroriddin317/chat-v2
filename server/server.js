@@ -7,6 +7,7 @@ import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
 
 import cookieParser from 'cookie-parser'
+import { readFile } from 'fs'
 import config from './config'
 import Html from '../client/html'
 
@@ -35,6 +36,24 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
+server.get('/api/v1/getData/', async (req, res) => {
+  readFile(`${__dirname}/data.json`, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err)
+    }
+    res.json(JSON.parse(data))
+  })
+})
+
+server.get('/api/v1/getUsers/', async (req, res) => {
+  readFile(`${__dirname}/users.json`, 'utf8', (err, data) => {
+    if (err) {
+      console.log(err)
+    }
+    res.json(JSON.parse(data))
+  })
+})
+
 server.use('/api/', (req, res) => {
   res.status(404)
   res.end()
@@ -42,7 +61,7 @@ server.use('/api/', (req, res) => {
 
 const [htmlStart, htmlEnd] = Html({
   body: 'separator',
-  title: 'Skillcrucial'
+  title: 'Chat'
 }).split('separator')
 
 server.get('/', (req, res) => {

@@ -4,7 +4,7 @@ import Navigations from './navigations'
 
 const Chat = () => {
   return (
-    <div className="flex w-screen h-screen bg-body-bg">
+    <div className="flex w-screen h-screen bg-body-bg overflow-hidden">
       <Navigations/>
       <MainWindow/>
     </div>
