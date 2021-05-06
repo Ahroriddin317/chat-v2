@@ -1,6 +1,8 @@
 [
   {
+    "id": 1,
     "workSpaceName": "JIMBIES",
+    "workSpaceImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Blue_rose-artificially_coloured.jpg/1200px-Blue_rose-artificially_coloured.jpg",
       "usersId": [
           "606db813a05c93e105f25b85",
           "606db813f83dc20f7c785684"
@@ -43,7 +45,9 @@
     ]
   },
   {
+    "id": 2,
     "workSpaceName": "HOUSEDOWN",
+      "workSpaceImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Blue_rose-artificially_coloured.jpg/1200px-Blue_rose-artificially_coloured.jpg",
     "usersId": [
           "606db813a05c93e105f25b85",
           "606db813f83dc20f7c785684"

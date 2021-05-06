@@ -1,14 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import LeftNavigationButton from './leftNavigationButton'
 import WorkSpaceIcon from './workSpaceIcon'
 
 const LeftNavigation = () => {
-  const imagesUrl = [1, 2, 3, 4, 5, 6, 7]
+  const { workSpaces } = useSelector((s) => s.chat)
+
   return (
     <div className="w-16 h-full bg-purple-900 bg-opacity-70">
-      <div>
-        {imagesUrl.map((url) => {
-          return <WorkSpaceIcon key={url} imgUrl={`/images/${url}.png`} />
+      <div className="mt-5 ml-3">
+        {workSpaces.map(({ workSpaceImg, id }) => {
+          return <WorkSpaceIcon key={id} imgUrl={workSpaceImg} id={id} />
         })}
       </div>
       <LeftNavigationButton />

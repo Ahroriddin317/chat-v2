@@ -4,7 +4,7 @@ const LeftNavigationButton = () => {
   return (
     <button
       type="submit"
-      className="bg-blue-500 px-auto pb-1 w-9 h-9 ml-3 mt-28 rounded-full text-white text-2xl focus:outline-none"
+      className="absolute bg-blue-500 px-auto pb-1 w-10 h-10 ml-3 bottom-3 rounded-full text-white text-2xl focus:outline-none"
     >
       +
     </button>

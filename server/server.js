@@ -36,7 +36,7 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-server.get('/api/v1/getData/', async (req, res) => {
+server.get('/api/v1/getWorkSpaces/', async (req, res) => {
   readFile(`${__dirname}/data.json`, 'utf8', (err, data) => {
     if (err) {
       console.log(err)
