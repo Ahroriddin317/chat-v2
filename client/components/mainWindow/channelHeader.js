@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import Star from '../../assets/svg/star.svg'
 import ManIcon from '../../assets/svg/manIcon.svg'
 import Search from '../../assets/svg/search.svg'
@@ -6,10 +7,11 @@ import Notification from '../../assets/svg/notification.svg'
 import Options from '../../assets/svg/options.svg'
 
 const ChannelHeader = () => {
+  const { name } = useSelector((s) => s.chat.channel)
   return (
     <div className="flex justify-between mt-3 px-5">
       <div className="flex items-center text-xl font-lato">
-        <span>#general</span>
+        <span>{`#${name}`}</span>
         <Star className="ml-2 cursor-pointer" />
       </div>
       <div className="flex justify-between w-96 h-8">
