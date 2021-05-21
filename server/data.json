@@ -9,6 +9,7 @@
         ],
     "channels": [
       {
+        "id": 1,
         "name": "NEUROCELL",
         "messages": [
           {
@@ -26,6 +27,7 @@
         ]
       },
       {
+        "id": 2,
         "name": "ZYTRAC",
         "messages": [
           {
@@ -54,6 +56,7 @@
         ],
     "channels": [
       {
+        "id": 1,
         "name": "ONTALITY",
         "messages": [
           {
@@ -71,6 +74,7 @@
         ]
       },
       {
+        "id": 2,
         "name": "ZIZZLE",
         "messages": [
           {

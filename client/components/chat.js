@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getWorkSpaces } from '../redux/reducers/chat'
+import { getUsers, getWorkSpaces } from '../redux/reducers/chat'
 import MainWindow from './mainWindow'
 import Navigations from './navigations'
 
 const Chat = () => {
   const dispatch = useDispatch()
   useEffect(() => {
+    dispatch(getUsers())
     dispatch(getWorkSpaces())
   }, [])
   return (

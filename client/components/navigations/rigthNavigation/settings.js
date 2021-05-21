@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Icon from '../../../assets/svg/icon.svg'
 import SettingChannelIcon from '../../../assets/svg/settingChannelIcon.svg'
 
 const Settings = () => {
   const [setting, setsetting] = useState(false)
+  const { workSpaceName } = useSelector(s => s.chat.workSpace)
 
   const buttonHandler = () => {
     setsetting(!setting)
@@ -17,7 +19,7 @@ const Settings = () => {
           onClick={buttonHandler}
           className="flex mt-4 text-xl text-white focus:outline-none"
         >
-          <span className="font-lato">Nomad List</span>
+          <span className="font-lato">{workSpaceName}</span>
           <Icon className="ml-3 mt-3" />
         </button>
         <SettingChannelIcon className="mt-3" />
@@ -31,7 +33,7 @@ const Settings = () => {
           add frends
         </button>
         <button type="button" className="focus:outline-none">
-          in out is Nomad List
+          {`in out is ${workSpaceName}`}
         </button>
       </div>
     </>

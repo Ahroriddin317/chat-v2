@@ -1,7 +1,7 @@
-import React from "react"
-import Channels from "./channels"
-import Settings from "./settings"
-import Users from "./users"
+import React from 'react'
+import Channels from './channels'
+import Settings from './settings'
+import Users from './users'
 
 const RigthNavigation = () => {
   return (
