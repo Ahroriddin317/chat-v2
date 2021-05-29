@@ -4,12 +4,14 @@ const GET_WORK_SPACES = 'GET_WORK_SPACES'
 const GET_WORK_SPACE = 'GET_WORK_SPACE'
 const GET_USERS = 'GET_USERS'
 const GET_CHANNEL = 'GET_CHANNEL'
+const GET_CHANNEL_MESSAGES = 'GET_CHANNEL_MESSAGES'
 
 const initialState = {
   users: [],
   workSpaces: [],
   workSpace: {},
-  channel: {}
+  channel: {},
+  channelMessages: []
 }
 
 export default (state = initialState, action) => {
@@ -27,6 +29,8 @@ export default (state = initialState, action) => {
       return { ...state, users: action.users }
     case GET_CHANNEL:
       return { ...state, channel: action.channel }
+    case GET_CHANNEL_MESSAGES:
+      return { ...state, channelMessages: action.messages }
 
     default:
       return state
@@ -60,5 +64,25 @@ export function getChannel(channelId) {
   return (dispatch, getState) => {
     const channel = getState().chat.workSpaces.channels.find(({ id }) => id === channelId)
     return dispatch({ type: GET_CHANNEL, channel })
+  }
+}
+
+export function getChannelMessages() {
+  return (dispatch, getState) => {
+    const messages = getState().chat.channel.messages.reduce((initState, message) => {
+      const user = getState().chat.users.find((usr) => usr.userId === message.userId)
+      return [
+        ...initState,
+        {
+          ...message,
+          name: user.name,
+          image: user.image,
+          userName: user.userName,
+          email: user.email,
+          tymeZona: user.tymeZona
+        }
+      ]
+    }, [])
+    return dispatch({ type: GET_CHANNEL_MESSAGES, messages })
   }
 }

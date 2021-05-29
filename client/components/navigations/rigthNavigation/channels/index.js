@@ -4,7 +4,6 @@ import Channel from './channel'
 
 const Channels = () => {
   const { channels } = useSelector((s) => s.chat.workSpace)
-  console.log(channels)
   return (
     <div className="mt-20">
       <header className="flex justify-between font-lato text-gray-400 text-sm uppercase">

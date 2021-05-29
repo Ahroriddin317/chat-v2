@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getChannelMessages } from '../../redux/reducers/chat'
 import ChannelHeader from './channelHeader'
 import ChatField from './chatField'
 import Write from './write'
 
 const MainWindow = () => {
+  const dispatch = useDispatch()
+  const { channel } = useSelector((s) => s.chat)
+  useEffect(() => {
+    if (channel.messages) dispatch(getChannelMessages())
+  }, [channel])
   return (
     <div className="bg-white w-full">
       <ChannelHeader />
