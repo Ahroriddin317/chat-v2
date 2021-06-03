@@ -62,7 +62,7 @@ export function getUsers() {
 
 export function getChannel(channelId) {
   return (dispatch, getState) => {
-    const channel = getState().chat.workSpaces.channels.find(({ id }) => id === channelId)
+    const channel = getState().chat.workSpace.channels.find(({ id }) => id === channelId)
     return dispatch({ type: GET_CHANNEL, channel })
   }
 }

@@ -13,7 +13,7 @@ const Channels = () => {
       <div className="flex flex-col mt-3">
         {channels
           ? channels.map(({ name, id }) => {
-              return <Channel key={id} channelName={name} />
+              return <Channel key={id} channelName={name} id={id} />
             })
           : '...'}
       </div>
