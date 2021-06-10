@@ -8,6 +8,7 @@ import Options from '../../assets/svg/options.svg'
 
 const ChannelHeader = () => {
   const { name } = useSelector((s) => s.chat.channel)
+  const { users } = useSelector((s) => s.chat)
   return (
     <div className="flex justify-between mt-3 px-5">
       <div className="flex items-center text-xl font-lato">
@@ -17,7 +18,7 @@ const ChannelHeader = () => {
       <div className="flex justify-between w-96 h-8">
         <div className="flex items-center">
           <ManIcon />
-          <span className="text-gray-400 ml-2">1,093</span>
+          <span className="text-gray-400 ml-2">{users.length}</span>
         </div>
         <div className="relative">
           <input
@@ -25,7 +26,10 @@ const ChannelHeader = () => {
             placeholder="Search..."
             className="border rounded border-gray-400 z-10 w-60 h-8 px-2 py-2 focus:outline-none"
           />
-          <button type="button" className="absolute top-2 right-4 ml-56 focus:outline-none">
+          <button
+            type="button"
+            className="absolute top-2 right-4 ml-56 focus:outline-none border-r-0"
+          >
             <Search />
           </button>
         </div>

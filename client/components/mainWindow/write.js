@@ -12,7 +12,11 @@ const Write = () => {
       <button type="button" className="focus:outline-none">
         <Voice />
       </button>
-      <input type="text" placeholder="Message in #general" className=" w-11/12 h-5" />
+      <input
+        type="text"
+        placeholder="Message in #general"
+        className="w-11/12 h-5 focus:outline-none"
+      />
       <button type="button" className="focus:outline-none">
         <Smile />
       </button>

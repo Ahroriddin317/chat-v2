@@ -2,13 +2,12 @@ import express from 'express'
 import path from 'path'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import sockjs from 'sockjs'
 import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
 
 import cookieParser from 'cookie-parser'
+import http from 'http'
 import { readFile } from 'fs'
-import config from './config'
 import Html from '../client/html'
 
 require('colors')
@@ -21,10 +20,10 @@ try {
   console.log('SSR not found. Please run "yarn run build:ssr"'.red)
 }
 
-let connections = []
+const connections = []
 
 const port = process.env.PORT || 8090
-const server = express()
+const app = express()
 
 const middleware = [
   cors(),
@@ -34,9 +33,9 @@ const middleware = [
   cookieParser()
 ]
 
-middleware.forEach((it) => server.use(it))
+middleware.forEach((it) => app.use(it))
 
-server.get('/api/v1/getWorkSpaces/', async (req, res) => {
+app.get('/api/v1/getWorkSpaces/', async (req, res) => {
   readFile(`${__dirname}/data.json`, 'utf8', (err, data) => {
     if (err) {
       console.log(err)
@@ -45,7 +44,7 @@ server.get('/api/v1/getWorkSpaces/', async (req, res) => {
   })
 })
 
-server.get('/api/v1/getUsers/', async (req, res) => {
+app.get('/api/v1/getUsers/', async (req, res) => {
   readFile(`${__dirname}/users.json`, 'utf8', (err, data) => {
     if (err) {
       console.log(err)
@@ -54,7 +53,7 @@ server.get('/api/v1/getUsers/', async (req, res) => {
   })
 })
 
-server.use('/api/', (req, res) => {
+app.use('/api/', (req, res) => {
   res.status(404)
   res.end()
 })
@@ -64,7 +63,7 @@ const [htmlStart, htmlEnd] = Html({
   title: 'Chat'
 }).split('separator')
 
-server.get('/', (req, res) => {
+app.get('/', (req, res) => {
   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
   res.write(htmlStart)
   appStream.pipe(res, { end: false })
@@ -74,7 +73,7 @@ server.get('/', (req, res) => {
   })
 })
 
-server.get('/*', (req, res) => {
+app.get('/*', (req, res) => {
   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
   res.write(htmlStart)
   appStream.pipe(res, { end: false })
@@ -84,18 +83,18 @@ server.get('/*', (req, res) => {
   })
 })
 
-const app = server.listen(port)
+const server = http.createServer(app)
+const io = require('socket.io')(server)
 
-if (config.isSocketsEnabled) {
-  const echo = sockjs.createServer()
-  echo.on('connection', (conn) => {
-    connections.push(conn)
-    conn.on('data', async () => {})
-
-    conn.on('close', () => {
-      connections = connections.filter((c) => c.readyState !== 3)
-    })
+io.on('connection', (socket) => {
+  console.log('user connected', socket.id)
+  connections.push(socket.id)
+  socket.on('disconnect', () => {
+    connections.splice(connections.indexOf(socket.id), 1)
+    console.log('this is socket disconnect', socket.id)
   })
-  echo.installHandlers(app, { prefix: '/ws' })
-}
-console.log(`Serving at http://localhost:${port}`)
+})
+
+server.listen(port)
+
+console.log(`Serving at http://localhost:${port}`, connections)
