@@ -9,10 +9,14 @@ import cookieParser from 'cookie-parser'
 import http from 'http'
 import { readFile } from 'fs'
 import Html from '../client/html'
+import mongooseService from './services/mongoose'
+import User from './model/User.model'
 
 require('colors')
 
 let Root
+
+mongooseService.connect()
 try {
   // eslint-disable-next-line import/no-unresolved
   Root = require('../dist/assets/js/ssr/root.bundle').default
@@ -45,12 +49,8 @@ app.get('/api/v1/getWorkSpaces/', async (req, res) => {
 })
 
 app.get('/api/v1/getUsers/', async (req, res) => {
-  readFile(`${__dirname}/users.json`, 'utf8', (err, data) => {
-    if (err) {
-      console.log(err)
-    }
-    res.json(JSON.parse(data))
-  })
+    const users = await User.find({})
+    res.json(users)
 })
 
 app.use('/api/', (req, res) => {
