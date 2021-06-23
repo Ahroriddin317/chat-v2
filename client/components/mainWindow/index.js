@@ -7,10 +7,10 @@ import Write from './write'
 
 const MainWindow = () => {
   const dispatch = useDispatch()
-  const { channel } = useSelector((s) => s.chat)
+  const { channel, workSpaces } = useSelector((s) => s.chat)
   useEffect(() => {
-    if (channel.messages) dispatch(getChannelMessages())
-  }, [channel])
+    if (channel.messages) dispatch(getChannelMessages(channel.id))
+  }, [workSpaces, channel])
   return (
     <div className="bg-white w-full">
       <ChannelHeader />

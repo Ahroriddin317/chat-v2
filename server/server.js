@@ -7,10 +7,11 @@ import React from 'react'
 
 import cookieParser from 'cookie-parser'
 import http from 'http'
-import { readFile } from 'fs'
 import Html from '../client/html'
 import mongooseService from './services/mongoose'
 import User from './model/User.model'
+import WorkSpace from './model/WorkSpace.model'
+import shortid from 'shortid'
 
 require('colors')
 
@@ -40,17 +41,13 @@ const middleware = [
 middleware.forEach((it) => app.use(it))
 
 app.get('/api/v1/getWorkSpaces/', async (req, res) => {
-  readFile(`${__dirname}/data.json`, 'utf8', (err, data) => {
-    if (err) {
-      console.log(err)
-    }
-    res.json(JSON.parse(data))
-  })
+  const workSpace = await WorkSpace.find({})
+  res.json(workSpace)
 })
 
 app.get('/api/v1/getUsers/', async (req, res) => {
-    const users = await User.find({})
-    res.json(users)
+  const users = await User.find({})
+  res.json(users)
 })
 
 app.use('/api/', (req, res) => {
@@ -93,8 +90,24 @@ io.on('connection', (socket) => {
     connections.splice(connections.indexOf(socket.id), 1)
     console.log('this is socket disconnect', socket.id)
   })
+
+  socket.on('message', async ({ message, workSpaceId, channelId }) => {
+    await WorkSpace.findOne({ id: workSpaceId })
+      .exec()
+      .then((workSpace) => {
+         const channel = workSpace.channels.find(({ id }) => id === channelId)
+    channel.messages = [...channel.messages, {
+        userId: '606db813a05c93e105f25b85',
+        messageId: shortid.generate(),
+        text: message,
+        date: `${new Date().getHours()}:${new Date().getMinutes()}`
+      }]
+    socket.emit('updateWorkSpaces', workSpace)
+    workSpace.save()
+      })
+  })
 })
 
 server.listen(port)
 
-console.log(`Serving at http://localhost:${port}`, connections)
+console.log(`Serving at http://localhost:${port}`)

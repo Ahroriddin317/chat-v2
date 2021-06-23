@@ -6,8 +6,8 @@ const ChatField = () => {
   const { channelMessages } = useSelector((s) => s.chat)
   return (
     <div className=" h-4/5 overflow-y-auto overflow-x-hidden px-5">
-      {channelMessages.map(({ messageId, name, timeZone, text, image }) => {
-        return <Message key={messageId} name={name} date={timeZone} text={text} image={image} />
+      {channelMessages.map(({ messageId, name, date, text, image }) => {
+        return <Message key={messageId} name={name} date={date} text={text} image={image} />
       })}
     </div>
   )

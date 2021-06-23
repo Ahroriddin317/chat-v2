@@ -6,6 +6,7 @@ import { io } from 'socket.io-client'
 
 import rootReducer from './reducers'
 import createHistory from './history'
+import { updateWorkSpace, updateWorkSpaces } from './reducers/chat'
 
 export const history = createHistory()
 
@@ -18,9 +19,13 @@ const composeFunc = process.env.NODE_ENV === 'development' ? composeWithDevTools
 const composedEnhancers = composeFunc(applyMiddleware(...middleware), ...enhancers)
 
 const store = createStore(rootReducer(history), initialState, composedEnhancers)
-const socket = io('/')
+export const socket = io('/')
 socket.on('connection', () => {
   console.log('hi')
+})
+socket.on('updateWorkSpaces', (workSpace) => {
+  store.dispatch(updateWorkSpaces(workSpace))
+  store.dispatch(updateWorkSpace(workSpace))
 })
 
 export default store
