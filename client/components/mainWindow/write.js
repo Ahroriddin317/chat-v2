@@ -8,9 +8,10 @@ import Smile from '../../assets/svg/smile.svg'
 const Write = () => {
   const [message, setMessage] = useState('')
   const { workSpace, channel } = useSelector((s) => s.chat)
+  const { userId } = useSelector((s) => s.auth.user)
   const sendMessage = (e) => {
     e.preventDefault()
-    socket.emit('message', { message, workSpaceId: workSpace.id, channelId: channel.id})
+    socket.emit('message', { message, workSpaceId: workSpace.id, channelId: channel.id, userId})
     setMessage('')
   }
   return (

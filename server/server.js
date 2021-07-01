@@ -6,9 +6,13 @@ import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
 
 import cookieParser from 'cookie-parser'
+import passport from 'passport'
 import http from 'http'
+import config from './config'
 import Html from '../client/html'
 import mongooseService from './services/mongoose'
+import passportJWT from './services/passport.js'
+import jwt from 'jsonwebtoken'
 import User from './model/User.model'
 import WorkSpace from './model/WorkSpace.model'
 import shortid from 'shortid'
@@ -32,13 +36,45 @@ const app = express()
 
 const middleware = [
   cors(),
+  passport.initialize(),
   express.static(path.resolve(__dirname, '../dist/assets')),
   bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }),
   bodyParser.json({ limit: '50mb', extended: true }),
   cookieParser()
 ]
 
+passport.use('jwt', passportJWT.jwt)
+
 middleware.forEach((it) => app.use(it))
+
+app.get('/api/v1/auth', async (req, res) => {
+  try {
+    const jwtUser = jwt.verify(req.cookies.token, config.secret)
+    const user = await User.findById(jwtUser.uid)
+    const payload = { uid: user.id }
+    const token = jwt.sign(payload, config.secret, { expiresIn: '48h' })
+    delete user.password
+    res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 48 })
+    res.json({ status: 'ok', token, user })
+  } catch (err) {
+    console.log(err)
+    res.json({ status: 'error', err })
+  }
+})
+
+app.post('/api/v1/auth', async (req, res) => {
+  try {
+    const user = await User.findAndValidateUser(req.body)
+    const payload = { uid: user.id }
+    const token = jwt.sign(payload, config.secret, { expiresIn: '48h' })
+    delete user.password
+    res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 48 })
+    res.json({ status: 'ok', user, token })
+  } catch (err) {
+    console.log(err)
+    res.json({ status: 'error', err })
+  }
+})
 
 app.get('/api/v1/getWorkSpaces/', async (req, res) => {
   const workSpace = await WorkSpace.find({})
@@ -91,19 +127,22 @@ io.on('connection', (socket) => {
     console.log('this is socket disconnect', socket.id)
   })
 
-  socket.on('message', async ({ message, workSpaceId, channelId }) => {
+  socket.on('message', async ({ message, workSpaceId, channelId, userId }) => {
     await WorkSpace.findOne({ id: workSpaceId })
       .exec()
       .then((workSpace) => {
-         const channel = workSpace.channels.find(({ id }) => id === channelId)
-    channel.messages = [...channel.messages, {
-        userId: '606db813a05c93e105f25b85',
-        messageId: shortid.generate(),
-        text: message,
-        date: `${new Date().getHours()}:${new Date().getMinutes()}`
-      }]
-    socket.emit('updateWorkSpaces', workSpace)
-    workSpace.save()
+        const channel = workSpace.channels.find(({ id }) => id === channelId)
+        channel.messages = [
+          ...channel.messages,
+          {
+            userId,
+            messageId: shortid.generate(),
+            text: message,
+            date: `${new Date().getHours()}:${new Date().getMinutes()}`
+          }
+        ]
+        socket.emit('updateWorkSpaces', workSpace)
+        workSpace.save()
       })
   })
 })
