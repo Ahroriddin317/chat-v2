@@ -28,7 +28,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    tymeZona: String
+    tymeZona: {
+      type:String,
+      default: '21:21 pm'
+    }
   },
   {
     timestamps: true

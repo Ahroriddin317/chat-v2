@@ -54,43 +54,28 @@ export function updateUser(user) {
 
 export function trySignIn() {
   return (dispatch) => {
-    fetch('/api/v1/auth')
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch({ type: LOGIN, token: data.token, user: data.user })
-        history.push('/private')
-      })
+    axios('/api/v1/auth').then(({data}) => {
+      dispatch({ type: LOGIN, token: data.token, user: data.user })
+      history.push('/private')
+    })
   }
 }
 
 export function tryGetUserInfo() {
   return () => {
-    fetch('/api/v1/user-info')
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data)
-      })
+    axios('/api/v1/user-info').then((data) => {
+      console.log(data)
+    })
   }
 }
 
 export function signIn() {
   return (dispatch, getState) => {
     const { email, password } = getState().auth
-    fetch('/api/v1/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
+    axios.post('/api/v1/auth', { email, password }).then(({data}) => {
+      dispatch({ type: LOGIN, token: data.token, user: data.user })
+      history.push('/private')
     })
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch({ type: LOGIN, token: data.token, user: data.user })
-        history.push('/private')
-      })
   }
 }
 

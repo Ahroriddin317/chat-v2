@@ -76,6 +76,19 @@ app.post('/api/v1/auth', async (req, res) => {
   }
 })
 
+app.post('/api/v1/registration', async (req, res) => {
+  const { email, password, name } = req.body
+  const user = new User({
+    userId: shortid.generate(),
+    email,
+    password,
+    name,
+    userName: `@ ${name.split(' ')[0]}`
+  })
+  await user.save()
+  res.json({ status: 'ok' })
+})
+
 app.get('/api/v1/getWorkSpaces/', async (req, res) => {
   const workSpace = await WorkSpace.find({})
   res.json(workSpace)
