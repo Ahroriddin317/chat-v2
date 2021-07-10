@@ -91,6 +91,7 @@
         "cors": "^2.8.5",
         "cross-env": "^7.0.3",
         "dotenv": "^8.2.0",
+        "emoji-picker-react": "^3.4.8",
         "express": "^4.17.1",
         "history": "^4.10.1",
         "jsonwebtoken": "^8.5.1",
