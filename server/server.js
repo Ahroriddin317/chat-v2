@@ -2,8 +2,6 @@ import express from 'express'
 import path from 'path'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { renderToStaticNodeStream } from 'react-dom/server'
-import React from 'react'
 
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
@@ -109,29 +107,9 @@ const [htmlStart, htmlEnd] = Html({
   title: 'Chat'
 }).split('separator')
 
-// app.get('/', (req, res) => {
-//   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
-//   res.write(htmlStart)
-//   appStream.pipe(res, { end: false })
-//   appStream.on('end', () => {
-//     res.write(htmlEnd)
-//     res.end()
-//   })
-// })
-
-// app.get('/*', (req, res) => {
-//   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
-//   res.write(htmlStart)
-//   appStream.pipe(res, { end: false })
-//   appStream.on('end', () => {
-//     res.write(htmlEnd)
-//     res.end()
-//   })
-// })
 app.get('/', (req, res) => {
   res.send(`
-    <h2>This is SkillCrucial Express Server!</h2>
-    <h3>Client hosted at <a href="http://localhost:8087">localhost:8087</a>!</h3>
+    <h1>Client hosted at <a href="http://localhost:8087">localhost:8087</a>!</h1>
   `)
 })
 
