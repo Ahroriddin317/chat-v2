@@ -63,7 +63,8 @@ userSchema.statics = {
     if (!password) {
       throw new Error('No password')
     }
-
+    
+    console.log(email)
     const user = await this.findOne({ email }).exec()
     if (!user) {
       throw new Error('No User')

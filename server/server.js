@@ -109,25 +109,45 @@ const [htmlStart, htmlEnd] = Html({
   title: 'Chat'
 }).split('separator')
 
+// app.get('/', (req, res) => {
+//   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
+//   res.write(htmlStart)
+//   appStream.pipe(res, { end: false })
+//   appStream.on('end', () => {
+//     res.write(htmlEnd)
+//     res.end()
+//   })
+// })
+
+// app.get('/*', (req, res) => {
+//   const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
+//   res.write(htmlStart)
+//   appStream.pipe(res, { end: false })
+//   appStream.on('end', () => {
+//     res.write(htmlEnd)
+//     res.end()
+//   })
+// })
 app.get('/', (req, res) => {
-  const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
-  res.write(htmlStart)
-  appStream.pipe(res, { end: false })
-  appStream.on('end', () => {
-    res.write(htmlEnd)
-    res.end()
-  })
+  res.send(`
+    <h2>This is SkillCrucial Express Server!</h2>
+    <h3>Client hosted at <a href="http://localhost:8087">localhost:8087</a>!</h3>
+  `)
 })
 
 app.get('/*', (req, res) => {
-  const appStream = renderToStaticNodeStream(<Root location={req.url} context={{}} />)
-  res.write(htmlStart)
-  appStream.pipe(res, { end: false })
-  appStream.on('end', () => {
-    res.write(htmlEnd)
-    res.end()
-  })
+  const initialState = {
+    location: req.url
+  }
+
+  return res.send(
+    Html({
+      body: '',
+      initialState
+    })
+  )
 })
+
 
 const server = http.createServer(app)
 const io = require('socket.io')(server)
