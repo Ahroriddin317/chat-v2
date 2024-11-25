@@ -7,6 +7,9 @@ module.exports = {
       }),
       spacing: {
         '35': '8.8rem'
+      },
+      width: {
+        '186' : '11.6rem'
       }
     },
     fontFamily: {

@@ -13,6 +13,7 @@ import Startup from './startup'
 import Chat from '../components/chat'
 import LoginForm from '../components/login'
 import Registration from '../components/registration'
+import Navbar from '../components/navbar'
 
 
 const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
@@ -77,7 +78,7 @@ const RootComponent = (props) => {
         <Startup>
           <Switch>
             <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />}/>
-            <Route exact path="/" component={() => <LoginForm />} />
+            <Route exact path="/" component={() => <Navbar />} />
             <Route exact path="/registration" component={() => <Registration />} />
             <PrivateRoute exact path="/private" component={() => <Chat />} />
             <Route component={() => <NotFound />} />
