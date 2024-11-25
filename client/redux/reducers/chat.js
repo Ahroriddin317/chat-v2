@@ -22,8 +22,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         workSpaces: action.workSpaces,
-        workSpace: action.workSpaces[0],
-        channel: action.workSpaces[0].channels[0]
+        workSpace: action.workSpaces[0] === 'undefind' ?  {}: action.workSpaces[0] ,
+        channel: action.workSpaces[0] === 'undefind'? action.workSpaces[0].channels[0] : {}
       }
     case GET_WORK_SPACE:
       return { ...state, workSpace: action.workSpace }

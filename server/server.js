@@ -152,7 +152,7 @@ io.on('connection', (socket) => {
             date: `${new Date().getHours()}:${new Date().getMinutes()}`
           }
         ]
-        socket.emit('updateWorkSpaces', workSpace)
+        io.sockets.emit('updateWorkSpaces', workSpace)
         workSpace.save()
       })
   })
