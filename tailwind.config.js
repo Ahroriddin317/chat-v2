@@ -9,7 +9,7 @@ module.exports = {
         '35': '8.8rem'
       },
       width: {
-        '186' : '11.6rem'
+        '18' : '4.5rem'
       }
     },
     fontFamily: {

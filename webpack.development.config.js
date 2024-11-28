@@ -108,9 +108,6 @@ const config = {
           { loader: 'css-loader', options: { sourceMap: true } },
           {
             loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader'
           }
         ]
       },
