@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getUsers, getWorkSpaces } from '../redux/reducers/chat'
 import MainWindow from './mainWindow'
-import Navigations from './navigations'
+import Navbar from './navbar'
 
 const Chat = () => {
   const dispatch = useDispatch()
@@ -11,10 +11,13 @@ const Chat = () => {
     dispatch(getWorkSpaces())
   }, [])
   return (
-    <div className="flex w-screen h-screen bg-body-bg overflow-hidden">
-      <Navigations />
-      <MainWindow />
+    <div className='overflow-hidden w-screen h-screen' >
+      <Navbar />
+      <div className="flex bg-body-bg w-screen h-screen">
+        <MainWindow />
+      </div>
     </div>
+
   )
 }
 

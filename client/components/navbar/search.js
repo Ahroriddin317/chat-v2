@@ -3,7 +3,7 @@ import SearchIcon from "../../assets/svg/searchIcon.svg"
 
 const Search = () => {
     return (
-        <button type='button' className='my-6 mb-7'>
+        <button type='button' className='ml-6 mr-7'>
             <SearchIcon />
         </button>
     )

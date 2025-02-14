@@ -13,7 +13,6 @@ import Startup from './startup'
 import Chat from '../components/chat'
 import LoginForm from '../components/login'
 import Registration from '../components/registration'
-import Navbar from '../components/navbar'
 
 
 const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
@@ -22,8 +21,8 @@ const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
     !!auth.user && !!auth.token ? (
       <Redirect to={{ pathname: '/private' }} />
     ) : (
-        <Component {...props} />
-      )
+      <Component {...props} />
+    )
   return <Route {...rest} render={func} />
 }
 
@@ -33,12 +32,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     !!auth.user && !!auth.token ? (
       <Component {...props} />
     ) : (
-        <Redirect
-          to={{
-            pathname: '/login'
-          }}
-        />
-      )
+      <Redirect
+        to={{
+          pathname: '/login'
+        }}
+      />
+    )
   return <Route {...rest} render={func} />
 }
 
@@ -77,8 +76,8 @@ const RootComponent = (props) => {
       <RouterSelector history={history} location={props.location} context={props.context}>
         <Startup>
           <Switch>
-            <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />}/>
-            <Route exact path="/" component={() => <Navbar />} />
+            <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />} />
+            <Route exact path="/" component={() => <Chat />} />
             <Route exact path="/registration" component={() => <Registration />} />
             <PrivateRoute exact path="/private" component={() => <Chat />} />
             <Route component={() => <NotFound />} />
